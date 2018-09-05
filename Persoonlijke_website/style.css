@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background-image: url(Images/background.jpg);
+    background-size: cover;
+
+}
+
+.banner {
+    width: 100%;
+}
+
+.background {
+    background-image: url(./Images/background.jpg);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    float: right;
+}
+
+nav {
+    width: 100%;
+    padding: 0%
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav li {
+    float: left;
+    border-right:2px solid rgba(0, 0, 0, 0.795);
+    width: 10% auto;
+}
+
+nav li a {
+    font-size: 1.5rem;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover:not(.active) {
+    background-color: #111;
+    position: relative;
+    transition-duration: 1s;
+    text-transform: 20px;
+    top: -3px;
+}
+
+nav .active {
+    background-color: rgb(46, 0, 73);
+    position: relative;
+    top: 3px;
+}   
+
+.inhoud {
+    color: white;
+    text-align: center;
+    border: 1px solid darkmagenta;
+    background: rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 10px 20px;
+    border-width: 3px;
+    margin: 2% 50% 0% 5%;
+}
+
+h1 {
+    margin: 0.5rem;
+    color: white;
+    text-shadow: 2px 2px;
+}
+
+#ik {
+    background-repeat: no-repeat;
+    background-size: 50%;
+    padding: 35px 35px 3px 35px;
+    background-origin: content-box;
+}
+
+.sem1 {
+    width: 85%;
+    padding-top: 2%;
+    padding-left: 2%;
+}
+
+.sem2 {
+    width: 85%;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-bottom: 15%;
+}
+
+thead th {
+    font-size: 1.25rem;
+    background: rgb(25, 124, 177);
+    color: #FFF;
+    font-family: 'Lato', sans-serif;
+}
+
+tbody td {
+    text-align: center;
+    background: rgb(133, 186, 214);
+    color: #FFF;
+    font-family: 'Lato', sans-serif;    
+}
+
+.vak {
+    text-align: left;
+}
