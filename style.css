@@ -7,7 +7,6 @@
 html{
     background-image: url(Images/background.jpg);
     background-size: cover;
-
 }
 
 .banner {
@@ -124,7 +123,6 @@ td {
     color: white;
     font-family: 'Lato', sans-serif; 
     line-height: 1.65;
-   
     max-width: 95%;
     margin: 40px auto 0 auto;
     display: flex;
@@ -189,7 +187,6 @@ td {
     color: white;
     font-family: 'Lato', sans-serif; 
     line-height: 1.65;
-   
     max-width: 95%;
     margin: 40px auto 0 auto;
     display: flex;
@@ -208,7 +205,6 @@ td {
 .extra-info {
     color: white;
     background-color: rgba(89, 100, 100, 0.400);
-
     font-family: 'Lato', sans-serif; 
     line-height: 1.65;
     max-width: 95%;
@@ -269,7 +265,6 @@ td {
 }
 
 .links ul li {
-
     font-size: 1.25rem;
     display: block;
     color: white;
