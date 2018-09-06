@@ -110,13 +110,20 @@ td {
 }
 
 /* Persoonlijke info / profile pagina */ 
+.vr {
+    width: 80%;
+    padding-left: 9%;
+}
 
 #hover2{
-    content:url(./Images/KevinWizard2.jpg)
+    content:url(./Images/KevinWizard2.jpg);
+    width: 90%;
+    margin-left: 12px;
+
 }
 
 #hover2:hover{
-    content:url(./Images/KevinWizard.jpg)
+    content:url(./Images/KevinWizard.jpg);
 }
 
 .column-layout {
@@ -244,6 +251,10 @@ td {
     margin-bottom: 15px;
     width: 25%;
     text-align: center;
+}
+
+.white_link {
+    color: white;
 }
 
 /* Info links */
