@@ -1,3 +1,4 @@
+/* Basis opmaak website */
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +23,7 @@ html{
     float: right;
 }
 
+/* Navigatie */
 nav {
     width: 100%;
     padding: 0%
@@ -32,26 +34,26 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-image: linear-gradient(gray, rgb(0, 0, 0));
 }
 
 nav li {
     float: left;
     border-right:2px solid rgba(0, 0, 0, 0.795);
-    width: 10% auto;
+    width: 8%;
 }
 
 nav li a {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 8px 8px;
     text-decoration: none;
 }
 
 nav li a:hover:not(.active) {
-    background-color: #111;
+    background-color: rgb(62, 6, 100);
     position: relative;
     transition-duration: 1s;
     text-transform: 20px;
@@ -59,35 +61,10 @@ nav li a:hover:not(.active) {
 }
 
 nav .active {
-    background-color: rgb(46, 0, 73);
-    position: relative;
-    top: 3px;
+    background-image: linear-gradient(rgb(0, 0, 0), gray); 
 }   
 
-.inhoud {
-    color: white;
-    text-align: center;
-    border: 1px solid darkmagenta;
-    background: rgb(0, 0, 0);
-    border-radius: 15px;
-    padding: 10px 20px;
-    border-width: 3px;
-    margin: 2% 50% 0% 5%;
-}
-
-h1 {
-    margin: 0.5rem;
-    color: white;
-    text-shadow: 2px 2px;
-}
-
-#ik {
-    background-repeat: no-repeat;
-    background-size: 50%;
-    padding: 35px 35px 3px 35px;
-    background-origin: content-box;
-}
-
+/* vakken en ec tables */
 .sem1 {
     width: 85%;
     padding-top: 2%;
@@ -98,23 +75,216 @@ h1 {
     width: 85%;
     padding-top: 2%;
     padding-left: 2%;
-    padding-bottom: 15%;
+    padding-bottom: 2%;
 }
 
-thead th {
+thead  {
     font-size: 1.25rem;
-    background: rgb(25, 124, 177);
+    background: gray;
     color: #FFF;
     font-family: 'Lato', sans-serif;
 }
 
-tbody td {
+tbody  {
     text-align: center;
-    background: rgb(133, 186, 214);
+    background: silver;
     color: #FFF;
     font-family: 'Lato', sans-serif;    
 }
 
-.vak {
-    text-align: left;
+td {
+    width: 8%;
 }
+
+.vak {
+    color: blue;
+    text-align: left;
+    width: 35%;
+}
+
+.niet_gehaald {
+    color: red;
+}
+
+.gehaald {
+    color: green
+}
+
+/* Persoonlijke info / profile pagina */ 
+
+#hover2{
+    content:url(./Images/KevinWizard2.jpg)
+}
+
+#hover2:hover{
+    content:url(./Images/KevinWizard.jpg)
+}
+
+.column-layout {
+    color: white;
+    font-family: 'Lato', sans-serif; 
+    line-height: 1.65;
+   
+    max-width: 95%;
+    margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-column {
+    background-color: rgba(128, 128, 128, 0.400);
+    border: 2px solid gray;
+    flex: 3;
+    order: 2;
+    padding: 15px;
+
+}
+
+.sidebar-one {
+    background-color: rgba(128, 128, 128, 0.400);
+    margin-right: 5px;
+    border: 2px solid gray;
+    flex: 0.6;
+    order: 1; 
+    padding: 15px;
+    margin-right: 15px;
+}
+
+.ik {
+    padding: 15px;
+}
+
+.biografie {
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: white;
+    padding: 5px;
+    width: 35%;
+    text-align: center;
+}
+
+.call-outs-container {
+    color: white;
+    font-family: 'Lato', sans-serif; 
+    line-height: 1.65;
+    max-width: 95%;
+    margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.call-out {
+    border: 2px solid gray;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    flex-basis: 49%;
+}
+
+.call-out:nth-child(1) {background-color: rgba(128, 128, 128, 0.400);}
+.call-out:nth-child(2) {background-color: rgba(128, 128, 128, 0.400);}
+
+/* Index Pagina */
+.index-page {
+    color: white;
+    font-family: 'Lato', sans-serif; 
+    line-height: 1.65;
+   
+    max-width: 95%;
+    margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.waarom {
+    background-color: rgba(89, 100, 100, 0.400);
+    border: 2px solid white;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    flex-basis: 49%;
+}
+
+.extra-info {
+    color: white;
+    background-color: rgba(89, 100, 100, 0.400);
+
+    font-family: 'Lato', sans-serif; 
+    line-height: 1.65;
+    max-width: 95%;
+    margin: 40px auto 2% auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-een {    
+    border: 2px solid rgba(255, 255, 255, 0.932);
+    flex: 3;
+    order: 2;
+    padding: 15px;
+}
+
+.info-twee {
+    border: 2px solid rgba(255, 255, 255, 0.932);
+    margin-right: 5px;
+    flex: 1;
+    order: 1; 
+    padding: 15px;
+}
+
+.Usborne {
+    border: 2px solid white;
+    border-radius: 15px;    
+    background-color: gray;
+    padding: 5px;
+    width: 45%;
+}
+
+.heading {
+    border: 2px solid white;
+    border-radius: 15px;
+    background-image: linear-gradient(gray, rgb(0, 0, 0)); 
+    padding: 5px;
+    margin-bottom: 15px;
+    width: 25%;
+    text-align: center;
+}
+
+/* Info links */
+.links {
+    color: white;
+    margin: 2%;
+    max-width: 65%;
+    height: 50px;
+    padding: 2%;
+}
+
+.links ul{
+    list-style-type: none;
+    padding: 15px;
+    overflow: hidden;
+    background-color: rgba(128, 128, 128, 0.800);
+    border: 2px solid gray;
+    margin-bottom: 2%;
+}
+
+.links ul li {
+
+    font-size: 1.25rem;
+    display: block;
+    color: white;
+    margin: 15px;
+    padding: 8px 8px;
+    text-decoration: none;
+}
+
+.links li a:hover {
+    background-color: rgba(62, 6, 100, 0.288);
+    position: relative;
+    transition-duration: 1s;
+    text-transform: 20px;
+    top: -3px;
+}
+
+
+
