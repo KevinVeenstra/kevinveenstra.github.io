@@ -6,7 +6,7 @@
 
 html{
     background-image: url(Images/background.jpg);
-    background-size: cover;
+    background-size: repeat;
 }
 
 .banner {
@@ -15,11 +15,11 @@ html{
 
 .background {
     background-image: url(./Images/background.jpg);
+    padding-top: 20%
     height: 100%;
     width: 100%;
-    background-size: cover;
     background-position: center;
-    float: right;
+    
 }
 
 /* Navigatie */
@@ -137,8 +137,8 @@ td {
 }
 
 .main-column {
-    background-color: rgba(128, 128, 128, 0.400);
-    border: 2px solid gray;
+    background-color: rgba(128, 128, 128, 0.500);
+    border: 2px solid blue;
     flex: 3;
     order: 2;
     padding: 15px;
@@ -146,7 +146,7 @@ td {
 }
 
 .sidebar-one {
-    background-color: rgba(128, 128, 128, 0.400);
+    background-color: rgba(128, 128, 128, 0.500);
     margin-right: 5px;
     border: 2px solid gray;
     flex: 0.6;
@@ -186,8 +186,8 @@ td {
     flex-basis: 49%;
 }
 
-.call-out:nth-child(1) {background-color: rgba(128, 128, 128, 0.400);}
-.call-out:nth-child(2) {background-color: rgba(128, 128, 128, 0.400);}
+.call-out:nth-child(1) {background-color: rgba(128, 128, 128, 0.500);}
+.call-out:nth-child(2) {background-color: rgba(128, 128, 128, 0.500);}
 
 /* Index Pagina */
 .index-page {
@@ -201,7 +201,7 @@ td {
 }
 
 .waarom {
-    background-color: rgba(89, 100, 100, 0.400);
+    background-color: rgba(89, 100, 100, 0.500);
     border: 2px solid white;
     padding: 20px;
     box-sizing: border-box;
@@ -211,7 +211,7 @@ td {
 
 .extra-info {
     color: white;
-    background-color: rgba(89, 100, 100, 0.400);
+    background-color: rgba(89, 100, 100, 0.500);
     font-family: 'Lato', sans-serif; 
     line-height: 1.65;
     max-width: 95%;
