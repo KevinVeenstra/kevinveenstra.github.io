@@ -40,19 +40,19 @@ var job = "deliverer"
 var solved = false;
 
 if (puchaseBook === true && inTrain === true && job === "teacher") {
-    console.log("I can finaly enjoy my book!")
+    console.log("I can finaly enjoy my book!");
 } else if (puchaseBook === true && inTrain === false && job === "teacher") {
     console.log("I have my book, but I don't have time to enjoy it!");
 } else if (puchaseBook === false && job === "teacher") {
-    console.log("I have not yet orderd my book");
+    console.log("I have not yet orderd my book for reading");
 } else if (puchaseBook === true && inTrain === true && job === "student") {
-    console.log("It's time for homework!")
+    console.log("It's time for homework!");
 } else if (puchaseBook === true && inTrain === false && job === "student") {
     console.log("I have my book, but I don't have time to do homework!");
 } else if (puchaseBook === false && job === "student") {
-    console.log("I have not yet orderd my book");
+    console.log("I have not yet orderd my book for homework");
 } else if (puchaseBook === true && inTrain === true && job === "deliverer") {
-    console.log("The book is send!")
+    console.log("The book has been send!");
 } else if (puchaseBook === true && inTrain === false && job === "deliverer") {
     console.log("The book is orderd, but not het send");
 } else if (puchaseBook === false && job === "deliverer") {
