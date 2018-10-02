@@ -7,25 +7,13 @@ function fibonacci(num) {
         // Next fibonacci number = previous + one before previous // Translated to JavaScript:
         fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
         console.log(fibonacci[i]);
-        
     }
     return "the fibonacci reeks tot en met positie: " + num;
 }
 
 console.log(fibonacci(10));
 
-//----------------------------------
-
-/*
-function countdown(seconds) {
-    for (let s = seconds; s > 0; s--) {
-        console.log(`T-` + s + ` seconds to liftoff!`);
-    }
-    return `LIFT OFF!`;
-}
-
-console.log(countdown(10));
-*/
+//-------------------------------------------
 
 var i = 10;
 function countDown() {
