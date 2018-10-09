@@ -7,11 +7,6 @@ function random_lapTime(lapRounds) {
 console.log(random_lapTime(lapRounds));
 
 
-
-
-
-
-
 const allMyRecords = [
     ["The Who - Pinball Wizard", "Rolling Stones - Exile on main street", "Police - Message in a bottle"],
     ["De Dijk - Alle 40 Goed", "Het Goede Doel - Belgie", "Doe Maar - skunk"]
