@@ -1,5 +1,5 @@
 // 1. Schrijf een plaatje naar de DOM
-let randomImage = document.getElementById('random-img');
+let randomImage = document.getElementById('random-img')
 randomImage.setAttribute('src', './assets/images/bat.jpg')
 
 // 2. Schrijf alle plaatjes naar de DOM
@@ -19,28 +19,18 @@ for (i = 0; i < imageNames.length; i++) {
 }
 
 // 3. Maak plaatjes klikbaar
-function imageClicked(event) 
+function imageClicked(event)
 {
     console.log(event)
 
     // 4. Laat tekst verschijnen als je klikt
     let message = document.getElementById('message')
-    
+
     // 5. Vergelijk plaatjes met elkaar
     let clickedImageSrc = event.target.src
     if (randomImage.src === clickedImageSrc) {
         message.innerText = 'Goed geraden!'
     } else {
-        message.innerText = 'Helaas! Probeer het nog eens'
-    }   
-
+        message.innerText = 'Helaas! Probeer het nog eens.'
+    }
 }
-
-
-
-
-
-
-
-
-

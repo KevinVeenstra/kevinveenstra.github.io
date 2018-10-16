@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="./events.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-
 <body>
-    <h1>Boodschappenlijst</h1>
+    <h1>Mijn boodschappenlijstje</h1>
     <form action="">
         <input type="text" name="product" id="product">
         <input type="number" name="price" id="price">
-        <button type="submit" id="add.button">add</button>
+        <button type="submit" id="add_button">add</button>
     </form>
-    <p id="totalPrice">
 
-    </p>
-
+    <h2>Totale prijs:</h2>
+    <p id="totalPrice"></p>
 
     <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Prijs</th>
+            </tr>
+        </thead>
         <tbody id="tbody">
-            <tr>product</tr>
-            <tr>price</tr>
+
         </tbody>
     </table>
 
-
+    <script src="./event.js"></script>
 </body>
 </html>
