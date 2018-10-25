@@ -1,0 +1,28 @@
+body {
+    font-family: Georgia, sans-serif;
+    text-align: center;
+    font-size: 14px;
+}
+
+#container {
+   display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.intro {
+    font-size: 16px;
+}
+
+img{
+  width:100px;
+  height:100px;
+  margin: 2px;
+}
+
+.border-green{
+    border:solid 4px greenyellow;
+}

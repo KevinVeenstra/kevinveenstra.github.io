@@ -337,3 +337,27 @@ td {
     flex-basis: 49%;
 }
 
+/* Safari */
+.safari-layout {
+    color: white;
+    font-family: 'Lato', sans-serif; 
+    font-size: 1.25rem;
+    line-height: 1.65;
+    max-width: 95%;
+    margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-safari {
+    background-color: rgba(128, 128, 128, 0.800);
+    padding: 0.5%;
+    flex: 3;
+    order: 2;
+}
+
+.sidebar-safari {
+    margin-right: 15px;
+    flex: 1;
+    order: 1; 
+}

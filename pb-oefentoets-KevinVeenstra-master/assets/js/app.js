@@ -18,6 +18,7 @@ for (i = 0; i < imageNames.length; i++) {
     imageGrid.appendChild(image)
 }
 
+
 // 3. Maak plaatjes klikbaar
 function imageClicked(event) 
 {
