@@ -1,0 +1,29 @@
+// submit button
+// get input (round times)
+// get input (driver name)
+// push to DOM
+// 
+
+
+
+Coureur: Ricciardo, rondetijden: 4.01, 5.04, 4.76 
+ 
+Coureur: Verstappen, rondetijden: 4.03, 4.23, 4.56 
+
+
+
+var coureursArray = [
+    {
+        coureur: 'verstappen',
+        rondetijd1: 4.03,
+        rondetijd2: 4.23,
+        rondetijd3: 4.56,
+    },
+    {
+        coureur: 'Ricciardo',
+        rondetijd1: 4.01,
+        rondetijd2: 5.04,
+        rondetijd3: 4.76
+    },
+]
+

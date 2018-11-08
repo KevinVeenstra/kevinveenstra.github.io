@@ -1,0 +1,18 @@
+html,
+body {
+    height: 100%;
+    font-size: 1em;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1{
+	font-family: 'Griffy', cursive;
+	font-size: 3em;
+	color:#ee5000;
+}

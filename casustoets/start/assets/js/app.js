@@ -1,63 +1,70 @@
+
 window.addEventListener('load', init);
+
+var questions = [
+    {
+        vraag: '01101000 01100101 01101100 01101100 01101111',
+        antwoord: 'Hello'
+    },
+    {
+        vraag: '01010111 01100101 01101100 01101011 01101111 01101101',
+        antwoord: 'Welkom'
+    },
+    {
+        vraag: '01010100 01101111 01110100 00100000 01111010 01101001 01100101 01101110 01110011',
+        antwoord: 'Tot ziens'
+    },
+    {
+        vraag: '01000111 01110010 01101111 01100101 01110100 01101010 01100101 01110011',
+        antwoord: 'Groetjes'
+    }]
+
+var input;
+var output = document.getElementById('answerText')
+var random = Math.floor(Math.random()* questions.length)
+var questionCont = document.getElementById('question')
+let current = questions[random];
+
+
 
 
 function init() {
     console.log('DOM is loaded');
+    loadQuestion()
+    button = document.getElementById('submit');
+    button.addEventListener('click', clickHandler)
 }
 
-var awnsers = [
-    {    
-    binary: '01101000 01100101 01101100 01101100 01101111',
-    awnser: 'Hello'
-    },
-    {
-    binary: '01010111 01100101 01101100 01101011 01101111 01101101',
-    awnser: 'Welkom'
-    },
-    {
-    binary: '01010100 01101111 01110100 00100000 01111010 01101001 01100101 01101110 01110011',
-    awnser: 'Tot ziens'
-    },
-    {
-    binary: '01000111 01110010 01101111 01100101 01110100 01101010 01100101 01110011',
-    awnser: 'Groetjes'
-}]
-
-var Input = document.getElementById('inputAnswer');       
-var showText = document.getElementById('answerText');       
-var question = document.getElementById('questionText');  
-var button = document.getElementById('submit');               
-var questionContainer = document.getElementById('question');   
-var currentAnswer;
-
-button.addEventListener('click', buttonPress);                 
-
-function renderAnswers(){                                               
-    let Gameselect = Math.round(Math.random()*3);                                        
-    questionContainer.setAttribute('class', 'question'); 
-    question.innerText = awnsers[Gameselect].binary;
-    currentAnswer = awnsers[Gameselect].awnser;
+function loadQuestion () {
+    let currentQuestion = document.getElementById('questionText');
+    currentQuestion.innerText = current.vraag;
 }
 
-function goodAnswer(){
-    showText.innerHTML = `Je antwoord <span class="bg-green">${Input.value}</span> is helemaal goed`;
-    questionContainer.setAttribute('class', 'bg-green'); 
-    renderAnswers();         
-}
-
-function wrongAnswer(){
-    showText.innerHTML = `Helaas, <span class="bg-red">${Input.value}</span> is niet juist, probeer het nog eens`; 
-    questionContainer.setAttribute('class', 'bg-red'); 
-}
-
-function buttonPress() {           
+function clickHandler() {
     event.preventDefault();
-    if(Input.value === currentAnswer){
-        goodAnswer()  
-    } else {
-        wrongAnswer();
+    getInput();
+    checkanswer();
+}
+
+function getInput() {
+    input = document.getElementById('inputAnswer').value
+    console.log(input)
+}
+function checkanswer(){
+    if (input == current.antwoord) {
+        correct();
+    }else {
+        inCorrect();
     }
 }
 
+function correct() {
+     output.innerHTML = `Je antwoord <span class="bg-green">${input}</span> is helamaal goed!`
+     questionCont.setAttribute('class', 'bg-green')
+}
 
-renderAnswers();
+function inCorrect() {
+    output.innerHTML = `Je antwoord <span class="bg-red">${input}</span> is helamaal fout!`
+    questionCont.setAttribute('class', 'bg-red')
+}
+
