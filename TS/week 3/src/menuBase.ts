@@ -1,0 +1,5 @@
+class menuBase extends viewBase {
+
+    
+
+}
