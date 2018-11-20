@@ -7,6 +7,7 @@ abstract class ViewBase {
 
     protected readonly d_canvasHelper : CanvasHelper;
     protected readonly d_changeViewCallback : (aNewView : ViewBase) => void;
+    // protected readonly d_mathHelper: MathHelper;
 
     private d_alive : boolean = true;
 
@@ -17,13 +18,15 @@ abstract class ViewBase {
      * @param aChangeViewCallback -
      */
     protected constructor(aCanvas: HTMLCanvasElement,aChangeViewCallback : (aNewView : ViewBase) => void ) {
-
+        
+        
         // construct our helper class
-
+        this.d_canvasHelper = new CanvasHelper(aCanvas);
         // store the callback for viewchanges
-
+        this.d_changeViewCallback = aChangeViewCallback;
         // let our helper class handle the click handling
-        // and let him pass the result ro our method
+
+        // and let him pass the result to our method
 
     }
 
@@ -39,7 +42,7 @@ abstract class ViewBase {
 
         if (!this.d_alive) return; // workaround to solve lingering onClick events
         // call a method that is implemented in the derived class
-
+        this.HandleClick(aXaxis, aYaxis);
     }
 
     /**
@@ -49,9 +52,9 @@ abstract class ViewBase {
      */
     public Render() : void {
         // let the helper clear the screen
-
+        this.d_canvasHelper.Clear();
         // call the derived RenderScreen method
-        this.RenderScreen
+        this.RenderScreen();
     }
 
     /**

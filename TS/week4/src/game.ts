@@ -18,6 +18,8 @@ class Game {
     private shipXOffset: number = 50;
     private shipYOffset: number = 37;
 
+    private d_currentView: ViewBase;
+
     public constructor(canvasId: HTMLCanvasElement) {
         //construct all canvas
         this.canvas = canvasId;
@@ -42,180 +44,188 @@ class Game {
         ]
 
         // all screens: uncomment to activate
-        this.start_screen();
+        this.d_currentView = new MenuView(canvasId, this.changeView)
+        this.d_currentView.Render()
+        // this.start_screen();
         // this.level_screen();
         // this.title_screen();
 
     }
 
-    //-------- Splash screen methods ------------------------------------
-    /**
-     * Function to initialize the splash screen
-     */
-    public start_screen() {
-        const horizontalCenter = this.canvas.width / 2;
-        const verticalCenter = this.canvas.height / 2;
-
-        //1. add 'Asteroids' text
-        this.writeTextToCanvas("Asteroids", 140, horizontalCenter, 150);
-
-        //2. add 'Press to play' text
-        this.writeTextToCanvas("PRESS PLAY TO START", 40, horizontalCenter, verticalCenter - 20);
-
-        //3. add button with 'start' text
-        this.writeButtonToCanvas();
-
-        //4. add Asteroid image
-        this.writeImageToCanvas(
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big1.png",
-            horizontalCenter - 50,
-            verticalCenter + 40
-        );
+    private changeView(aNewView: ViewBase) : void {
+        this.d_currentView.BeforeExit();
+        this.d_currentView.aNewView();
+        this.d_currentView.Render() ;
     }
 
-    //-------- level screen methods -------------------------------------
-    /**
-     * Function to initialize the level screen
-     */
-    public level_screen() {
-        //1. load life images
-        const lifeImagePath = "./assets/images/SpaceShooterRedux/PNG/UI/playerLife1_blue.png";
+    // //-------- Splash screen methods ------------------------------------
+    // /**
+    //  * Function to initialize the splash screen
+    //  */
+    // public start_screen() {
+    //     const horizontalCenter = this.canvas.width / 2;
+    //     const verticalCenter = this.canvas.height / 2;
 
-        this.writeImageToCanvas(lifeImagePath, 70, 50, 40, undefined, this.lives);
+    //     //1. add 'Asteroids' text
+    //     this.writeTextToCanvas("Asteroids", 140, horizontalCenter, 150);
 
-        //2. draw current score
-        this.writeTextToCanvas(`Score: ${this.score}`, 20, this.canvas.width - 150, 65, undefined, "right");
+    //     //2. add 'Press to play' text
+    //     this.writeTextToCanvas("PRESS PLAY TO START", 40, horizontalCenter, verticalCenter - 20);
 
-        //3. draw random asteroids
-        const asteroids: Array<string> = [
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big1.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big2.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big3.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big4.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_med1.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_med3.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_small1.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_small2.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_tiny1.png",
-            "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_tiny2.png",
-        ];
+    //     //3. add button with 'start' text
+    //     this.writeButtonToCanvas();
 
-        const maxAsteroidsOnScreen: number = 5;
+    //     //4. add Asteroid image
+    //     this.writeImageToCanvas(
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big1.png",
+    //         horizontalCenter - 50,
+    //         verticalCenter + 40
+    //     );
+    // }
 
-        for (let i = 0; i < maxAsteroidsOnScreen; i++) {
-            const index = this.randomNumber(0, asteroids.length);
+    // //-------- level screen methods -------------------------------------
+    // /**
+    //  * Function to initialize the level screen
+    //  */
+    // public level_screen() {
+    //     //1. load life images
+    //     const lifeImagePath = "./assets/images/SpaceShooterRedux/PNG/UI/playerLife1_blue.png";
 
-            this.writeImageToCanvas(
-                asteroids[index],
-                this.randomNumber(0, this.canvas.width),
-                this.randomNumber(0, this.canvas.height)
-            );
-        }
-    }
+    //     this.writeImageToCanvas(lifeImagePath, 70, 50, 40, undefined, this.lives);
 
-    //-------- Title screen methods -------------------------------------
+    //     //2. draw current score
+    //     this.writeTextToCanvas(`Score: ${this.score}`, 20, this.canvas.width - 150, 65, undefined, "right");
 
-    /**
-     * Function to initialize the title screen
-     */
-    public title_screen() {
-        const horizontalCenter = this.canvas.width / 2;
-        let verticalCenter = this.canvas.height / 2;
+    //     //3. draw random asteroids
+    //     const asteroids: Array<string> = [
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big1.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big2.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big3.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_big4.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_med1.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_med3.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_small1.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_small2.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_tiny1.png",
+    //         "./assets/images/SpaceShooterRedux/PNG/Meteors/meteorBrown_tiny2.png",
+    //     ];
 
-        //1. draw your score
-        this.writeTextToCanvas(`${this.player} score is ${this.score}`, 80, horizontalCenter, verticalCenter - 100);
+    //     const maxAsteroidsOnScreen: number = 5;
 
-        //2. draw all highscores
-        this.writeTextToCanvas("HIGHSCORES", 40, horizontalCenter, verticalCenter);
+    //     for (let i = 0; i < maxAsteroidsOnScreen; i++) {
+    //         const index = this.randomNumber(0, asteroids.length);
 
-        this.highscores.forEach((element, index) => {
-            verticalCenter += 40;
+    //         this.writeImageToCanvas(
+    //             asteroids[index],
+    //             this.randomNumber(0, this.canvas.width),
+    //             this.randomNumber(0, this.canvas.height)
+    //         );
+    //     }
+    // }
 
-            this.writeTextToCanvas(
-                `${index + 1}: ${element.playerName} - ${element.score}`,
-                20,
-                horizontalCenter,
-                verticalCenter
-            );
-        });
-    }
+    // //-------- Title screen methods -------------------------------------
 
-    //-------Generic canvas functions ----------------------------------
+    // /**
+    //  * Function to initialize the title screen
+    //  */
+    // public title_screen() {
+    //     const horizontalCenter = this.canvas.width / 2;
+    //     let verticalCenter = this.canvas.height / 2;
 
-    /**
-     * Renders a random number between min and max
-     * @param {number} min - minimal time
-     * @param {number} max - maximal time
-     */
-    public randomNumber(min: number, max: number): number {
-        return Math.round(Math.random() * (max - min) + min);
-    }
+    //     //1. draw your score
+    //     this.writeTextToCanvas(`${this.player} score is ${this.score}`, 80, horizontalCenter, verticalCenter - 100);
 
-    public writeTextToCanvas(
-        text: string,
-        fontSize: number,
-        xCoordinate: number,
-        yCoordinate: number,
-        color: string = "white",
-        alignment: CanvasTextAlign = "center"
-    ) {
-        this.ctx.font = `${fontSize}px Minecraft`;
-        this.ctx.fillStyle = color;
-        this.ctx.textAlign = alignment;
-        this.ctx.fillText(text, xCoordinate, yCoordinate);
-    }
+    //     //2. draw all highscores
+    //     this.writeTextToCanvas("HIGHSCORES", 40, horizontalCenter, verticalCenter);
 
-    public writeImageToCanvas(
-        src: string,
-        xCoordinate: number,
-        yCoordinate: number,
-        deltaX: number = 0,
-        deltaY: number = 0,
-        loops: number = 1
-    ) {
-        let element = document.createElement("img");
-        element.src = src;
+    //     this.highscores.forEach((element, index) => {
+    //         verticalCenter += 40;
 
-        for (let i = 0; i < loops; i++) {
-            element.addEventListener("load", () => {
-                xCoordinate += deltaX;
-                yCoordinate += deltaY;
-                this.ctx.drawImage(element, xCoordinate, yCoordinate);
-            });
-        }
-    }
+    //         this.writeTextToCanvas(
+    //             `${index + 1}: ${element.playerName} - ${element.score}`,
+    //             20,
+    //             horizontalCenter,
+    //             verticalCenter
+    //         );
+    //     });
+    // }
 
-    /**
-     * Writes "Play" button to canvas.
-     * NOTE: This is all hard coded, but that's fine for now.
-     */
-    public writeButtonToCanvas() {
-        const horizontalCenter = this.canvas.width / 2;
-        const verticalCenter = this.canvas.height / 2;
+    // //-------Generic canvas functions ----------------------------------
 
-        let buttonElement = document.createElement("img");
-        buttonElement.src = "./assets/images/SpaceShooterRedux/PNG/UI/buttonBlue.png";
+    // /**
+    //  * Renders a random number between min and max
+    //  * @param {number} min - minimal time
+    //  * @param {number} max - maximal time
+    //  */
+    // public randomNumber(min: number, max: number): number {
+    //     return Math.round(Math.random() * (max - min) + min);
+    // }
 
-        buttonElement.addEventListener("load", () => {
-            this.ctx.drawImage(buttonElement, horizontalCenter - 111, verticalCenter + 219);
-            this.writeTextToCanvas("Play", 20, horizontalCenter, verticalCenter + 245, "black");
-        });
+    // public writeTextToCanvas(
+    //     text: string,
+    //     fontSize: number,
+    //     xCoordinate: number,
+    //     yCoordinate: number,
+    //     color: string = "white",
+    //     alignment: CanvasTextAlign = "center"
+    // ) {
+    //     this.ctx.font = `${fontSize}px Minecraft`;
+    //     this.ctx.fillStyle = color;
+    //     this.ctx.textAlign = alignment;
+    //     this.ctx.fillText(text, xCoordinate, yCoordinate);
+    // }
 
-        this.canvas.addEventListener("click", (event: MouseEvent) => {
-            const horizontalCenter = this.canvas.width / 2 + this.canvas.offsetLeft; // << new line of code
-            const verticalCenter = this.canvas.height / 2 + this.canvas.offsetTop;// << new line of code
-            if (event.x > horizontalCenter - 111 && event.x < horizontalCenter + 111) {
-                if (event.y > verticalCenter + 219 && event.y < verticalCenter + 259) {
-                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                    this.level_screen();
-                    window.addEventListener("keydown", (event) => this.keyDownHandler(event));
-                    window.addEventListener("keyup", (event) => this.keyUpHandler(event));
+    // public writeImageToCanvas(
+    //     src: string,
+    //     xCoordinate: number,
+    //     yCoordinate: number,
+    //     deltaX: number = 0,
+    //     deltaY: number = 0,
+    //     loops: number = 1
+    // ) {
+    //     let element = document.createElement("img");
+    //     element.src = src;
 
-                    window.setInterval(() => this.draw(), 1000 / 30);
-                }
-            }
-        });
-    }
+    //     for (let i = 0; i < loops; i++) {
+    //         element.addEventListener("load", () => {
+    //             xCoordinate += deltaX;
+    //             yCoordinate += deltaY;
+    //             this.ctx.drawImage(element, xCoordinate, yCoordinate);
+    //         });
+    //     }
+    // }
+
+    // /**
+    //  * Writes "Play" button to canvas.
+    //  * NOTE: This is all hard coded, but that's fine for now.
+    //  */
+    // public writeButtonToCanvas() {
+    //     const horizontalCenter = this.canvas.width / 2;
+    //     const verticalCenter = this.canvas.height / 2;
+
+    //     let buttonElement = document.createElement("img");
+    //     buttonElement.src = "./assets/images/SpaceShooterRedux/PNG/UI/buttonBlue.png";
+
+    //     buttonElement.addEventListener("load", () => {
+    //         this.ctx.drawImage(buttonElement, horizontalCenter - 111, verticalCenter + 219);
+    //         this.writeTextToCanvas("Play", 20, horizontalCenter, verticalCenter + 245, "black");
+    //     });
+
+    //     this.canvas.addEventListener("click", (event: MouseEvent) => {
+    //         const horizontalCenter = this.canvas.width / 2 + this.canvas.offsetLeft; // << new line of code
+    //         const verticalCenter = this.canvas.height / 2 + this.canvas.offsetTop;// << new line of code
+    //         if (event.x > horizontalCenter - 111 && event.x < horizontalCenter + 111) {
+    //             if (event.y > verticalCenter + 219 && event.y < verticalCenter + 259) {
+    //                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    //                 this.level_screen();
+    //                 window.addEventListener("keydown", (event) => this.keyDownHandler(event));
+    //                 window.addEventListener("keyup", (event) => this.keyUpHandler(event));
+
+    //                 window.setInterval(() => this.draw(), 1000 / 30);
+    //             }
+    //         }
+    //     });
+    // }
 
     private draw() {
         this.ctx.clearRect(this.shipXOffset, this.shipYOffset, this.canvas.width, this.canvas.height);
@@ -266,7 +276,28 @@ class Game {
             this.downPressed = false;
         }
     }
+    
+    public writeImageToCanvas(
+        src: string,
+        xCoordinate: number,
+        yCoordinate: number,
+        deltaX: number = 0,
+        deltaY: number = 0,
+        loops: number = 1
+    ) {
+        let element = document.createElement("img");
+        element.src = src;
+
+        for (let i = 0; i < loops; i++) {
+            element.addEventListener("load", () => {
+                xCoordinate += deltaX;
+                yCoordinate += deltaY;
+                this.ctx.drawImage(element, xCoordinate, yCoordinate);
+            });
+        }
+    }
 }
+
 
 //this will get an HTML element. I cast this element in de appropriate type using <>
 let init = function () {

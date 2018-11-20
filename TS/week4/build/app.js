@@ -159,7 +159,8 @@ let init = function () {
 window.addEventListener('load', init);
 class CanvasHelper {
     constructor(aCanvas) {
-        ;
+        this.canvas = aCanvas;
+        this.ctx = this.canvas.getContext("2d");
     }
     RegisterOnClick(aCallBack) {
         this.canvas.addEventListener('click', (aEvent) => {
@@ -170,8 +171,8 @@ class CanvasHelper {
         this.ctx.clearRect(0, 0, this.GetWidth(), this.GetHeight());
     }
     GetCenter() {
-        const X = (this.canvas.width / 2);
-        const Y = (this.canvas.height / 2);
+        const X = (this.GetWidth() / 2);
+        const Y = (this.GetHeight() / 2);
         return { X, Y };
     }
     GetHeight() {
@@ -188,22 +189,24 @@ class CanvasHelper {
             this.ctx.fillText(text, aXpos, aYpos);
         }
     }
-    writeImageToCanvas(aSrc, aXpos, aYpos, deltaX = 0, deltaY = 0, loops = 1) {
-        {
-            let element = document.createElement("img");
-            element.src = aSrc;
-            for (let i = 0; i < loops; i++) {
-                element.addEventListener("load", () => {
-                    aXpos += deltaX;
-                    aYpos += deltaY;
-                    this.ctx.drawImage(element, aXpos, aYpos);
-                });
-            }
-        }
+    writeImageToCanvas(aSrc, aXpos, aYpos) {
+        let element = document.createElement("img");
+        element.src = aSrc;
+        this.ctx.drawImage(element, aXpos, aYpos);
     }
+    ;
     writeButtonToCanvas(aCaption, aXpos = -1, aYpos = -1) {
-        this.writeImageToCanvas("./assets/images/SpaceShooterRedux/PNG/UI/buttonBlue.png", aXpos, aYpos, 0, 0, 1);
-        this.writeTextToCanvas("start", 20, aXpos, aYpos, "black");
+        let buttonImage = new Image();
+        buttonImage.src = "./assets/images/SpaceShooterRedux/PNG/UI/buttonBlue.png";
+        buttonImage.addEventListener("load", () => {
+            let dx = aXpos;
+            let dy = aYpos;
+            if (dx < 0)
+                dx = (this.GetWidth() - buttonImage.width / 2);
+            if (dy < 0)
+                dy = (this.GetHeight() / 2 + buttonImage.height);
+            let fontX = dx + ((buttonImage.width = aCaption.length - 18) / 2);
+        });
     }
 }
 class ViewBase {
@@ -213,6 +216,8 @@ class ViewBase {
             if (!this.d_alive)
                 return;
         };
+        this.d_canvasHelper = new CanvasHelper(aCanvas);
+        this.d_changeViewCallback = aChangeViewCallback;
     }
     Render() {
         this.RenderScreen;

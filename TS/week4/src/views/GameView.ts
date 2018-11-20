@@ -9,13 +9,16 @@ class GameView extends ViewBase
     private readonly score: number = 400;
     private readonly lives: number = 3;
 
+    public constructor(aCanvas : HTMLCanvasElement,aChangeViewCallback : (aNewView : ViewBase) => void ) {
+        super(aCanvas,aChangeViewCallback);
+    }
 
     // provide the missing content
     public RenderScreen() {
 
     }
 
-    public HandleClick() {
+    protected HandleClick() {
 
     }
 
