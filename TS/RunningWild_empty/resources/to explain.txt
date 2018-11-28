@@ -1,0 +1,71 @@
+what to do
+
+we gaan de code analyseren ..
+
+welke functies hebben we en waar hoort deze bij ?
+
+>> public constructor(canvasId: HTMLCanvasElement) 
+deze initialiseert de canvas waar we op werken. de manier waarop deze dat doet maakt het mogelijk dat we meerdere games kunnen starten op dezelfde basis.
+
+        this.canvas.width = window.innerWidth; // add /2 to allow two games side-by-side horizontal
+        this.canvas.height = window.innerHeight;// add /2 to allow two games side-by-side vertical
+		
+als we dit testen komen we bij de button click achter een probleem de uitlijning is incorrect
+
+        this.canvas.addEventListener("click", (event: MouseEvent) => {
+            <new> const horizontalCenter = this.canvas.width / 2 + this.canvas.offsetLeft;
+            <new> const verticalCenter = this.canvas.height / 2 + this.canvas.offsetTop;
+            if (event.x > horizontalCenter - 111 && event.x < horizontalCenter + 111) {
+
+Dit is de power of OOP.. hergebruik door minimale effort.
+
+echter is deze code natuurlijk niet echt OOP maar we kunnen wel stap voor stap naar meer structuur. 
+
+Structuur >>
+allereerst maken we een plan voor opsplitsing
+
+alles in een file wordt onoverzichtelijk
+we hebben een App.ts maar dit is veel meer dan alleen de game
+
+laten we eerst eens wat zaken uitelkaar trekken.
+
+maak de volgende mappen aan
+\base
+hierin komen de basis klassen te staan
+
+\controllers
+hierin komen de controllers te staan de controllers besturen de logic
+
+\dataObjects
+hierin komen de object klassen (data containers) welke geen directe invloed op de game zullen hebben
+
+\entities
+voor dit project herkennen we de speler, de asteroids en alle onderdelen welke interactie in de game kunnen hebben. We gaan een State machine maken voor elke entiteit daardoor zullen we per entiteit een submap maken voor de verschillende states.
+maak alvast
+\entities\player
+\entities\asteroid
+
+\helpers
+in deze map stoppen we speciale klassen die ons gaan helpen maar niet specifiek voor deze game hoeven zijn.
+
+\views
+hierin gaan we de views maken. denk aan de verschillende schermen 
+
+we hebben nu een structuur bedacht (alles kan wijzigen maar dan hebben we vast een goede basis)
+
+als eerste stap verplaatsen we de code voor de schermen naar verschillende files. als je een scherm als een afzonderlijk object ziet dan hoeft die alleen maar omzichzelf te denken. 
+
+allereerst maken we een baseclass waarin we bedenken wat een scherm kan.
+
+wat zal elk scherm gelijk hebben.
+- een canvas om op te tekenen
+- een context van de canvas
+- afhandeling van onClick. (dit gaat nu fout zie demo) dus dit willen we per scherm. 
+- een methode om te tekenen. laten we zeggen Render.
+
+dit hebben ze allemaal gelijk maar de 
+
+
+
+
+
