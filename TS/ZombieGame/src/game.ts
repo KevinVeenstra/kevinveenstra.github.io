@@ -10,18 +10,28 @@ class Game {
         this.player = new Entity(canvasElement, "./assets/images/Zombies/4ZombieFrontSPAWN.png", 200, 200);
         this.zombie = new Entity(canvasElement, "./assets/images/player.png", 100, 100);
         console.log('in game constructor');
-        this.drawPlayer();
-        this.drawZombie();
+        // this.drawPlayer();
+        this.startGame();
+        // this.drawZombie();
 
     }
 
-    public drawPlayer() {
-        this.player.drawPlayer();
+    public startGame(){
+        setInterval(()=>{
+            this.canvas.clearCanvas();
+            this.player.drawPlayer();
+            this.zombie.drawZombie();
+            this.player.MovePlayer();
+        },30)  
     }
 
-    public drawZombie() {
-        this.zombie.drawZombie();
-    }
+//     public drawPlayer(){
+ 
+//     }
+
+//     public drawZombie() {
+//     this.zombie.drawZombie();
+// }
 }
 
 window.addEventListener('load', init);

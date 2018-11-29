@@ -49,11 +49,28 @@ class Entity {
     constructor(canvas, imageSrc, xCoor, yCoor) {
         this.canvas = new Canvas(canvas);
         this.imageSrc = imageSrc;
-        this.xPos = xCoor;
-        this.yPos = yCoor;
+        this.speed = 1;
+        this.xPos = 100;
+        this.yPos = 100;
     }
     drawPlayer() {
         this.canvas.writeImageFromFileToCanvas(this.imageSrc, this.xPos, this.yPos);
+    }
+    MovePlayer() {
+        document.onkeypress = (press) => {
+            if (press.key == "w") {
+                this.yPos = this.yPos - this.speed;
+            }
+            if (press.key == "a") {
+                this.xPos = this.xPos - this.speed;
+            }
+            if (press.key == "s") {
+                this.yPos = this.yPos + this.speed;
+            }
+            if (press.key == "d") {
+                this.xPos = this.xPos + this.speed;
+            }
+        };
     }
     drawZombie() {
         this.canvas.writeImageFromFileToCanvas(this.imageSrc, this.xPos, this.yPos);
@@ -66,14 +83,15 @@ class Game {
         this.player = new Entity(canvasElement, "./assets/images/Zombies/4ZombieFrontSPAWN.png", 200, 200);
         this.zombie = new Entity(canvasElement, "./assets/images/player.png", 100, 100);
         console.log('in game constructor');
-        this.drawPlayer();
-        this.drawZombie();
+        this.startGame();
     }
-    drawPlayer() {
-        this.player.drawPlayer();
-    }
-    drawZombie() {
-        this.zombie.drawZombie();
+    startGame() {
+        setInterval(() => {
+            this.canvas.clearCanvas();
+            this.player.MovePlayer();
+            this.player.drawPlayer();
+            this.zombie.drawZombie();
+        }, 30);
     }
 }
 window.addEventListener('load', init);
