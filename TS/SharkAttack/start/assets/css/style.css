@@ -1,0 +1,11 @@
+canvas{
+    background-image: url("../images/plastic-brick-blue.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+    /* width: 100vw;
+    height: 100vh; */
+}
+
+body {
+    overflow: hidden;
+}
