@@ -38,7 +38,10 @@ namespace Asteroids {
         private d_moveUp: boolean = false;
         private d_moveDown: boolean = false;
         private d_moveRight: boolean = false;
-        private d_moveLeft: boolean = false;
+        private d_moveLeft: boolean = false;    
+}
+    
+}
 
         /**
          *
